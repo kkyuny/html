@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>    
+    <script>
+        let isActive = false
+        function aaa(){
+
+            if(isActive === false){            
+                isActive = true
+                const token = String(Math.floor(Math.random() * 1000000)).padStart(6, "0")
+                document.getElementById("bbb").innerText = token  
+                
+                let time = 180
+                let min, second, realSecond
+                setInterval(function(){
+                    if(time>=0){
+                        min = Math.floor(time / 60)
+                        second = time % 60
+                        realSecond = String(second).padStart(2, "0")
+                        document.getElementById("ccc").innerText = min +":"+ realSecond
+                        time = time - 1
+                        if(time==0){
+                            isActive = false
+                        }
+                    }
+                }, 1000)
+            
+            }    
+        }  
+            
+    </script>
+    <title>Document</title>  
+</head>
+<body>
+    <span id="bbb">000000</span>
+    <button onclick="aaa()">인증번호 전송</button>
+    <div id="ccc">
+        3:00
+    </div>
+</body>
+</html>
